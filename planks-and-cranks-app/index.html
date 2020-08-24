@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	
+    <link rel='icon' href='./logos/logo-black.ico' type='image/x-icon'/ >
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <title>P&C</title>
+  </head>
+  <body>
+
+    <!-- Header and sticky navbar -->
+    <header class="container-fluid" class="justify-content-space-between">
+      <div class="d-inline-flex p-2 bd-highlight">
+        <a href="#/">
+          <img src="/logos/Planks & Cranks-logo (1).png" class="img-fluid p-0" width="240px" alt="Planks & Cranks">
+        </a>
+      </div>
+      <div class="d-inline-flex p-2 bd-highlight">
+      </div>
+    </header>
+    <nav class="navbar justify-content-space-between sticky-top" style="background-color: #8FC1E3; border-bottom: 5px solid #5085a5;">
+      <div class="d-inline-flex p-2 bd-highlight">
+        <a class="navbar-brand" href="#/">
+          <img src="./logos/logo.png" width="60" class="d-inline-block align-top" alt="" loading="lazy">
+        </a>    
+        <a class="nav-link" href="#/shop">SHOP</a>
+        <a class="nav-link" href="#/sell">SELL</a>
+      </div>
+      <div class="d-inline-flex p-2 bd-highlight">
+        <h6 id='username' class='align-self-center mb-0 pt-1'></h6>
+        <a id="checkout-link" class="nav-link" href="#/checkout">
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+          </svg>
+        </a>
+        <a id='login-link' class="nav-link" data-toggle="modal" data-target="#loginModal">
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M11 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM1.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM6 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm4.5 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M13 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+    
+    <!-- OPA content container -->
+    <main class="container-fluid p-0 h-100">
+    </main>
+
+    <!-- login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Sign In</h5>
+            <button id="close-loginModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container text-center pt-1" style="width: 370px;">
+              <form id="form-signin">
+                <div class="form-group-row pt-2">
+                  <input type="username" name="username" id="inputUsername" class="form-control pt-2" placeholder="Username" required="">
+                </div>
+                <div class="form-group-row pt-2">
+                  <input type="password" name="password" id="inputPassword" class="form-control pt-2" placeholder="Password" required="">
+                </div>
+                <div class="form-group-row pt-2 pb-3">
+                  <button id="login-button" class="btn btn-md btn-primary btn-block" class="submit" type="submit">Sign in</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="pt-1" href="#/create_account">Create an Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- logout modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Log Out</h5>
+            <button type="button" id="close-logoutModal" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you'd like to log out?
+          </div>     
+           <div class="modal-footer">
+             <a href="#/logout">
+              <button type="button" class="btn btn-primary">Okay</button>
+            </a>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer with empty links -->
+    <footer class="container-fluid pt-3">
+      <nav class="navbar bottom navbar-light bg-light">
+        <p class="mb-1">© 2020 Planks & Cranks</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+      </nav>
+    </footer>
+
+    <script src="index.js" type="module"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
