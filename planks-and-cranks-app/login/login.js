@@ -2,8 +2,8 @@ import {
   closeModal,
   main
 } from '../helpers/helper.js';
-import { login, setLoginButton, setLoginSpinner } from '../helpers/authService';
-import { loginURL, parseJSON } from '../helpers/routerService';
+import { login, setLoginButton, setLoginSpinner } from '../helpers/authService.js';
+import { loginURL, parseJSON } from '../helpers/routerService.js';
 
 export function loginPage() {
 

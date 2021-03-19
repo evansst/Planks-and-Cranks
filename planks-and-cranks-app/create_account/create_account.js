@@ -1,9 +1,9 @@
-import { login, setLoginButton, setLoginSpinner } from '../helpers/authService';
-import { parseJSON, usersURL } from '../helpers/routerService';
+import { login, setLoginButton, setLoginSpinner } from '../helpers/authService.js';
 import { closeModal, main } from '../helpers/helper.js';
+import { parseJSON, usersURL } from '../helpers/routerService.js';
 
 export default function createAccountPage() {
- main.innerHTML = `
+  main.innerHTML = `
   <div class="container text-center pt-5" style="width: 370px;">
     <form id="form-create-account">
       <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
@@ -38,19 +38,19 @@ export default function createAccountPage() {
 export function signUp(event) {
   setLoginSpinner();
 
-  (event.target.password.value === event.target.confirm_password.value) 
+  (event.target.password.value === event.target.confirm_password.value)
     ? setTimeout(() => sendUser(event), 1000)
-    : checkResponse({ error: "Your passwords don't match!"});
+    : checkResponse({ error: "Your passwords don't match!" });
 
   setLoginButton();
 }
 
 function sendUser({ target }) {
   const user = {
-      username: target.username.value,
-      name: target.name.value,
-      email_address: target.email_address.value,
-      password: target.password.value,
+    username: target.username.value,
+    name: target.name.value,
+    email_address: target.email_address.value,
+    password: target.password.value,
   };
 
   fetch(usersURL, {
@@ -65,9 +65,9 @@ function sendUser({ target }) {
 }
 
 function checkResponse(response) {
-  const {user, token, error } = response;
+  const { user, token, error } = response;
 
-  if(error) {
+  if (error) {
     alert(error);
     document.querySelectorAll('.passwordInput').forEach(input => input.value = '');
     const $button = document.querySelector('button');

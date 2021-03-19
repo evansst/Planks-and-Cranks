@@ -1,34 +1,36 @@
-import homePage from "./home/homePage.js";
-import shopPage from "./shop/shopPage.js";
-import { loginPage } from "./login/login.js";
-import createAccountPage from "./create_account/create_account.js";
-import logout from "./logout/logout.js";
-import createListing, { addSpecInput } from "./sell/createListing.js";
-import userProfilePage from "./profile/userProfile.js";
 import { addToCart, emptyCart } from "./cart/cart.js";
 import checkoutPage from "./checkout/checkout.js";
+import createAccountPage from "./create_account/create_account.js";
 import { loggedIn, setLogoutIcon } from './helpers/authService.js';
-import { routeForm } from './helpers/routerService.js';
 import { main } from './helpers/helper.js';
+import { routeForm } from './helpers/routerService.js';
+import homePage from "./home/homePage.js";
+import { loginPage } from "./login/login.js";
+import logout from "./logout/logout.js";
+import userProfilePage from "./profile/userProfile.js";
+import createListing, { addSpecInput } from "./sell/createListing.js";
+import shopPage from "./shop/shopPage.js";
 
 function routeChange() {
   const route = window.location.hash.split('#')[1] || '/';
   const path = route.split('/')[1];
   let ID;
-  if(route.length > 2) { ID = route.split('/')[2]; }
-  
+  if (route.length > 2) {
+    ID = route.split('/')[2];
+  }
+
   const page = routes[path];
-  
+
   page
     ? page(ID)
     : error404();
-  
+
   const user = loggedIn();
-  if(user) setLogoutIcon(user.username);
+  if (user) setLogoutIcon(user.username);
 }
 
 const error404 = () => {
-  main.innerHTML =  `
+  main.innerHTML = `
     <section>
       <h1>ERROR 404</h1>
       <h2>Uh, oh.  It looks like that page doesn't exist</h2>
@@ -48,14 +50,13 @@ const routes = {
 };
 
 
-
 window.addEventListener('load', routeChange);
 window.addEventListener('hashchange', routeChange);
 
 document.addEventListener('click', () => {
-  if(event.target.id === 'add-spec-input') addSpecInput(event);
-  if(event.target.id === 'add-to-cart') addToCart(event);
-  if(event.target.id === 'empty-cart') emptyCart();
+  if (event.target.id === 'add-spec-input') addSpecInput(event);
+  if (event.target.id === 'add-to-cart') addToCart(event);
+  if (event.target.id === 'empty-cart') emptyCart();
 });
 
 document.addEventListener('submit', (event) => {

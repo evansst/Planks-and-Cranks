@@ -1,4 +1,3 @@
-
 export function addToCart(event) {
   const listing_id = event.target.attributes.listing_id.value;
   const cart = localStorage.cart;
@@ -10,5 +9,5 @@ export function addToCart(event) {
 export function emptyCart() {
   localStorage.setItem('cart', '');
   const $ul = document.querySelector('#cart-list');
-  if($ul) $ul.innerHTML = '';
+  if ($ul) $ul.innerHTML = '';
 }

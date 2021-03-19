@@ -1,5 +1,5 @@
-import { loggedIn } from '../helpers/authService';
-import { listingsURL, parseJSON } from '../helpers/routerService';
+import { loggedIn } from '../helpers/authService.js';
+import { listingsURL, parseJSON } from '../helpers/routerService.js';
 
 export default function sendListing(event) {
 

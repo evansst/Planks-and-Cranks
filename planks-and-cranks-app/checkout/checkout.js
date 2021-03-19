@@ -1,5 +1,5 @@
 import { formatMoney, main } from "../helpers/helper.js";
-import { listingsURL, parseJSON } from '../helpers/routerService';
+import { listingsURL, parseJSON } from '../helpers/routerService.js';
 
 export default function checkoutPage() {
   main.innerHTML = `
@@ -184,7 +184,7 @@ export default function checkoutPage() {
 }
 
 function listingsToCart() {
-  const cart = localStorage.cart.split(',').slice(0,-1);
+  const cart = localStorage.cart.split(',').slice(0, -1);
 
   cart.forEach(getListing);
 }
@@ -192,15 +192,15 @@ function listingsToCart() {
 function getListing(listingID) {
 
   fetch(`${listingsURL}/${listingID}`)
-    .then(parseJSON)
-    .then(addListingToCartList);
+  .then(parseJSON)
+  .then(addListingToCartList);
 }
 
 function addListingToCartList(listing) {
   console.log(listing);
 
   document.querySelector('#cart-list').innerHTML +=
-`  <li class="list-group-item d-flex justify-content-between lh-condensed">
+    `  <li class="list-group-item d-flex justify-content-between lh-condensed">
   <div>
     <h6 class="my-0">${listing.brand} - ${listing.model}</h6>
     <small class="text-muted">${listing.gear_type} ${listing.year}, ${listing.size}</small>

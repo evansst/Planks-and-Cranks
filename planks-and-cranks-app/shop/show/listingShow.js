@@ -1,7 +1,7 @@
 import carousel from './carousel.js';
 import specs from './specs.js';
 import description from './details.js';
-import { listingsURL, parseJSON } from '../../helpers/routerService';
+import { listingsURL, parseJSON } from '../../helpers/routerService.js';
 import { main } from '../../helpers/helper.js';
 
 

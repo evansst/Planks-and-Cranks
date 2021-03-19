@@ -1,8 +1,8 @@
-import { tryLogin } from '../login/login';
-import { signUp } from '../create_account/create_account';
-import sendListing from '../sell/sendListing';
-import { deleteListing } from '../profile/userProfile';
-import { addSpecInput } from '../sell/createListing';
+import { tryLogin } from '../login/login.js';
+import { signUp } from '../create_account/create_account.js';
+import sendListing from '../sell/sendListing.js';
+import { deleteListing } from '../profile/userProfile.js';
+import { addSpecInput } from '../sell/createListing.js';
 
 export const baseURL = `http://localhost:3000`;
 export const listingsURL = `${baseURL}/listings`;

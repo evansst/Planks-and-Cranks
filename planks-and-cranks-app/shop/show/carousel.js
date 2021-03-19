@@ -21,18 +21,18 @@ export default function carousel(images) {
 
 function createCarouselElement() {
   const $container = document.createElement('div');
-  $container.outerHTML = `
-    <div class="col-sm-6 pt-5" style="max-width: 800px;">
-      <div id="imagesCarousel" class="carousel" data-ride="carousel">
-        <a class="carousel-control-prev" href="#imagesCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#imagesCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+  $container.className = 'col-sm-6 pt-5';
+  $container.style = 'max-width: 800px;';
+  $container.innerHTML = `
+    <div id="imagesCarousel" class="carousel" data-ride="carousel">
+      <a class="carousel-control-prev" href="#imagesCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#imagesCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   `;
 

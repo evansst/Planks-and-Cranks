@@ -1,7 +1,6 @@
 import * as helper from '../helpers/helper.js';
 
-export default function createListing() { 
-
+export default function createListing() {
 
     helper.main.innerHTML =  `
     <div class="container text-left py-5">

@@ -1,4 +1,4 @@
-import { listingsURL, parseJSON } from '../../helpers/routerService';
+import { listingsURL, parseJSON } from '../../helpers/routerService.js';
 import { formatMoney, main } from '../../helpers/helper.js';
 
 export default function listingIndex() {

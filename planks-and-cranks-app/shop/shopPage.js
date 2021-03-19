@@ -1,4 +1,3 @@
-
 import listingIndex from "./index/listingIndex.js";
 import listingShowPage from "./show/listingShow.js";
 
