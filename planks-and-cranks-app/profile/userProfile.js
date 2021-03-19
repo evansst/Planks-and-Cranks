@@ -1,22 +1,22 @@
-import * as $ from '../helpers/helper.js';
+import { listingsURL, parseJSON, usersURL } from '../helpers/routerService';
+import { formatMoney, main } from '../helpers/helper.js';
 
 
 export default function userProfilePage() {
   const user_id = localStorage.user_id;
 
-  fetch(`${$.usersURL}/${user_id}`,{
+  fetch(`${usersURL}/${user_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.token}`,
     }
   })
-    .then($.parseJSON)
-    .then(renderUserPage);
+  .then(parseJSON)
+  .then(renderUserPage);
 }
 
 function renderUserPage(response) {
-  const user = response.user;
-  const listings = response.listings;
+  const {user, listings} = response;
 
   const $container = document.createElement('div');
   $container.className = 'row';
@@ -29,7 +29,7 @@ function renderUserPage(response) {
   $container.innerHTML += userInfo(user);
   $container.append($rightColumn);
 
-  $.main.innerHTML = $container.outerHTML;
+  main.innerHTML = $container.outerHTML;
 }
 
 function userInfo(user) {
@@ -60,9 +60,7 @@ function cardDeck(listings) {
 
   listings
     .map(toListingCard)
-    .map($listingCard => {
-      $cardDeck.append($listingCard);
-    });
+    .forEach($listingCard => $cardDeck.append($listingCard));
 
   return $cardDeck;
 }
@@ -78,7 +76,7 @@ function toListingCard(listing) {
         <div class="card-footer">
           <h5  onclick="location.href='#/shop/${listing.id}';" style="cursor:pointer;" class="card-title">${listing.brand} - ${listing.model}</h5>
           <p class="card-text">${listing.year}, ${listing.size}</p>
-          <p class="card-text">${$.formatMoney(listing.price)} <br> <small class="text-muted"><del>${$.formatMoney(listing.msrp)}</del></small></p>
+          <p class="card-text">${formatMoney(listing.price)} <br> <small class="text-muted"><del>${formatMoney(listing.msrp)}</del></small></p>
           <div class="row justify-content-around">
             <form listing_id="${listing.id}" id="delete-listing"><input class="btn-sm btn-danger" type="submit" value="Remove"></input></form>
           </div>
@@ -95,7 +93,7 @@ export function deleteListing(event) {
 
   alert('Your listing was removed');
 
-  fetch(`${$.listingsURL}/${listing_id}`, {
+  fetch(`${listingsURL}/${listing_id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

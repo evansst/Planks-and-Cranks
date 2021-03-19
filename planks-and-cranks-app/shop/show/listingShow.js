@@ -1,16 +1,17 @@
-import * as $ from '../../helpers/helper.js';
 import carousel from './carousel.js';
 import specs from './specs.js';
 import description from './details.js';
+import { listingsURL, parseJSON } from '../../helpers/routerService';
+import { main } from '../../helpers/helper.js';
 
 
 export default function listingShowPage(listingID) {
 
-  fetch(`${$.listingsURL}/${listingID}`)
-    .then($.parseJSON)
+  fetch(`${listingsURL}/${listingID}`)
+    .then(parseJSON)
     .then(displayListing);
 
-  $.main.innerHTML = '';
+  main.innerHTML = '';
 }
 
 function displayListing(listing) {
@@ -23,7 +24,7 @@ function displayListing(listing) {
   $listingContainer.append(specs(listing));
   $listingContainer.append(description(listing));
 
-  $.main.append($listingContainer);
+  main.append($listingContainer);
 }
 
 

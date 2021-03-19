@@ -1,12 +1,14 @@
-import * as $ from "../../helpers/helper.js";
+import { listingsURL, parseJSON } from '../../helpers/routerService';
+import { formatMoney, main } from '../../helpers/helper.js';
 
 export default function listingIndex() {
   
-  fetch($.listingsURL)
-    .then($.parseJSON)
+  main.innerHTML = '';
+  
+  fetch(listingsURL)
+    .then(parseJSON)
     .then(displayCards);
   
-  $.main.innerHTML = '';
 }
 
 function displayCards(listings) {
@@ -15,7 +17,7 @@ function displayCards(listings) {
 
   listings.map(listing => toListingCard(listing)($cardDeck));
 
-  $.main.append($cardDeck);  
+  main.append($cardDeck);
 
 }
 
@@ -34,7 +36,7 @@ function toListingCard(listing) {
           <div class="card-footer">
             <h5 class="card-title">${listing.brand} - ${listing.model}</h5>
             <p class="card-text">${listing.year}, ${listing.size}</p>
-            <p class="card-text">${$.formatMoney(listing.price)} <br> <small class="text-muted"><del>${$.formatMoney(listing.msrp)}</del></small></p>
+            <p class="card-text">${formatMoney(listing.price)} <br> <small class="text-muted"><del>${formatMoney(listing.msrp)}</del></small></p>
           </div>
         </div>
       </div>

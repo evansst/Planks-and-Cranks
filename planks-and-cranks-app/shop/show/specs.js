@@ -1,9 +1,7 @@
 import { formatMoney } from "../../helpers/helper.js";
 
 export default function info(listing) {
-
   const $container = header(listing);
-
   $container.append(specs(listing.specs));
 
   return $container;

@@ -1,4 +1,4 @@
-import * as $ from '../helpers/helper.js';
+import * as helper from '../helpers/helper.js';
 
 export default function logout() {
   document.querySelector('a#login-link').outerHTML = ` 
@@ -15,6 +15,6 @@ export default function logout() {
     localStorage.setItem('token', '');
     localStorage.setItem('cart', '');
 
-    $.closeModal();
+    helper.closeModal();
     window.location.hash = '#';
 }

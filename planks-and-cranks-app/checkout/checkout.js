@@ -1,7 +1,8 @@
-import * as $ from "../helpers/helper.js";
+import { formatMoney, main } from "../helpers/helper.js";
+import { listingsURL, parseJSON } from '../helpers/routerService';
 
 export default function checkoutPage() {
-  $.main.innerHTML = `
+  main.innerHTML = `
   <div class="bg-light" cz-shortcut-listen="true">
     <div class="container">
   <div class="py-5 text-center">
@@ -186,27 +187,25 @@ function listingsToCart() {
   const cart = localStorage.cart.split(',').slice(0,-1);
 
   cart.forEach(getListing);
-
 }
 
 function getListing(listingID) {
 
-  fetch(`${$.listingsURL}/${listingID}`)
-    .then($.parseJSON)
+  fetch(`${listingsURL}/${listingID}`)
+    .then(parseJSON)
     .then(addListingToCartList);
 }
 
 function addListingToCartList(listing) {
   console.log(listing);
 
-  const $cartList = document.querySelector('#cart-list');
-  $cartList.innerHTML += 
+  document.querySelector('#cart-list').innerHTML +=
 `  <li class="list-group-item d-flex justify-content-between lh-condensed">
   <div>
     <h6 class="my-0">${listing.brand} - ${listing.model}</h6>
     <small class="text-muted">${listing.gear_type} ${listing.year}, ${listing.size}</small>
   </div>
-  <span class="text-muted">${$.formatMoney(listing.price)}</span>
+  <span class="text-muted">${formatMoney(listing.price)}</span>
 </li>`;
 
 }

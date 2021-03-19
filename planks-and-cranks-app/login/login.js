@@ -1,8 +1,13 @@
-import * as $ from '../helpers/helper.js';
+import {
+  closeModal,
+  main
+} from '../helpers/helper.js';
+import { login, setLoginButton, setLoginSpinner } from '../helpers/authService';
+import { loginURL, parseJSON } from '../helpers/routerService';
 
 export function loginPage() {
 
-    $.main.innerHTML = `
+    main.innerHTML = `
       <div class="container text-center pt-5" style="width: 370px;">
         <form id="form-signin">
           <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
@@ -22,16 +27,16 @@ export function loginPage() {
 }
 
 export function tryLogin(event) {
-  $.setLoginSpinner();
+  setLoginSpinner()
   setTimeout(() => getUser(event), 500);
   
 }
 
-function getUser(event) {
-  const username = event.target.username.value;
-  const password = event.target.password.value;
+function getUser({ target }) {
+  const username = target.username.value;
+  const password = target.password.value;
 
-  fetch($.loginURL, {
+  fetch(loginURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -41,9 +46,9 @@ function getUser(event) {
       password: password,
     })
   })
-    .then($.parseJSON)
-    .then(checkResponse);
-}    
+  .then(parseJSON)
+  .then(checkResponse);
+}
 
 
 
@@ -53,11 +58,11 @@ function checkResponse(response) {
   if(message) {
     alert(message);
   } else {
-    $.login(user)(token);
-    $.closeModal();
+    login(user)(token);
+    closeModal();
   
   }
-  $.setLoginButton();
+  setLoginButton();
   document.getElementById('form-signin').reset();
 }
 

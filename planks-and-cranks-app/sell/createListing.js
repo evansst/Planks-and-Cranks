@@ -1,9 +1,9 @@
-import * as $ from '../helpers/helper.js';
+import * as helper from '../helpers/helper.js';
 
 export default function createListing() { 
 
 
-    $.main.innerHTML =  `
+    helper.main.innerHTML =  `
     <div class="container text-left py-5">
       <form id="form-create-listing" class="text-right">
         <h1 class="h3 mb-3 font-weight-normal text-left">Sell your gear!</h1>

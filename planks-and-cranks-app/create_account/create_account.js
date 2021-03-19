@@ -1,7 +1,9 @@
-import * as $ from '../helpers/helper.js';
+import { login, setLoginButton, setLoginSpinner } from '../helpers/authService';
+import { parseJSON, usersURL } from '../helpers/routerService';
+import { closeModal, main } from '../helpers/helper.js';
 
 export default function createAccountPage() {
- $.main.innerHTML = `
+ main.innerHTML = `
   <div class="container text-center pt-5" style="width: 370px;">
     <form id="form-create-account">
       <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
@@ -29,37 +31,37 @@ export default function createAccountPage() {
   </div>
   `;
 
-  $.closeModal();
+  closeModal();
 
 }
 
 export function signUp(event) {
-  $.setLoginSpinner();
+  setLoginSpinner();
 
   (event.target.password.value === event.target.confirm_password.value) 
     ? setTimeout(() => sendUser(event), 1000)
     : checkResponse({ error: "Your passwords don't match!"});
 
-  $.setLoginButton();
+  setLoginButton();
 }
 
-function sendUser(event) {
+function sendUser({ target }) {
   const user = {
-      username: event.target.username.value,
-      name: event.target.name.value,
-      email_address: event.target.email_address.value,
-      password: event.target.password.value,
+      username: target.username.value,
+      name: target.name.value,
+      email_address: target.email_address.value,
+      password: target.password.value,
   };
 
-  fetch($.usersURL, {
+  fetch(usersURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user)
   })
-    .then($.parseJSON)
-    .then(checkResponse);
+  .then(parseJSON)
+  .then(checkResponse);
 }
 
 function checkResponse(response) {
@@ -71,7 +73,7 @@ function checkResponse(response) {
     const $button = document.querySelector('button');
     $button.innerHTML = 'Submit';
   } else {
-    $.login(user)(token);
+    login(user)(token);
     location.href = '#/';
   }
 }

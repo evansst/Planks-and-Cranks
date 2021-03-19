@@ -1,16 +1,17 @@
-import * as $ from "./helpers/helper.js";
+import * as helper from "./helpers/helper.js";
 import homePage from "./home/homePage.js";
 import shopPage from "./shop/shopPage.js";
 import { loginPage } from "./login/login.js";
 import createAccountPage from "./create_account/create_account.js";
 import logout from "./logout/logout.js";
-import createListing from "./sell/createListing.js";
+import createListing, { addSpecInput } from "./sell/createListing.js";
 import userProfilePage from "./profile/userProfile.js";
-import { addSpecInput } from "./sell/createListing.js";
 import { addToCart, emptyCart } from "./cart/cart.js";
 import checkoutPage from "./checkout/checkout.js";
+import { loggedIn, setLogoutIcon } from './helpers/authService';
+import { routeForm } from './helpers/routerService';
 
-function routeChange(e) {
+function routeChange() {
   const route = window.location.hash.split('#')[1] || '/';
   const path = route.split('/')[1];
   let ID;
@@ -22,12 +23,12 @@ function routeChange(e) {
     ? page(ID)
     : error404();
   
-  const user = $.loggedIn();
-  if(user) $.setLogoutIcon(user.username);
+  const user = loggedIn();
+  if(user) setLogoutIcon(user.username);
 }
 
 const error404 = () => {
-  $.main.innerHTML =  `
+  helper.main.innerHTML =  `
     <section>
       <h1>ERROR 404</h1>
       <h2>Uh, oh.  It looks like that page doesn't exist</h2>
@@ -59,6 +60,6 @@ document.addEventListener('click', () => {
 
 document.addEventListener('submit', (event) => {
   event.preventDefault();
-  $.routeForm[event.target.id](event);
+  routeForm[event.target.id](event);
 });
 

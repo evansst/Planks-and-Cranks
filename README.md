@@ -124,4 +124,4 @@ Project is: ongoing, with work on editing listings, uploading mulitple images, a
 Created by [Sam Evans](https://www.linkedin.com/in/evansst/)
 
 ## License
-[Click to view](https://github.com/evansst/PlanksandCranks/blob/master/LICENSE.md)
+[Click to view](https://github.com/evansst/Planks-and-Cranks/blob/master/LICENSE.md)

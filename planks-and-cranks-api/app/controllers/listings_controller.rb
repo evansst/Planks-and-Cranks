@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class ListingsController < ApplicationController
-  before_action :authenticate, only: %i[create update destroy]
+  before_action :authenticate, only: [:create, :update, :destroy]
   before_action :set_listing, only: %i[show update destroy]
 
   # GET /listings

@@ -1,8 +1,9 @@
-import * as $ from '../helpers/helper.js';
+import { loggedIn } from '../helpers/authService';
+import { listingsURL, parseJSON } from '../helpers/routerService';
 
 export default function sendListing(event) {
 
-  if (!$.loggedIn()) {
+  if (!loggedIn()) {
     alert('You must log in or create and account to sell your stuff!');
     document.querySelector('#login-link').click();
   } else {
@@ -28,7 +29,7 @@ function filterForm(form) {
 
 function postListing(formData) {
 
-  fetch($.listingsURL, {
+  fetch(listingsURL, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -36,6 +37,6 @@ function postListing(formData) {
     },
     body: formData
   })
-    .then($.parseJSON)
-    .then(response => window.location.hash = `/shop/${response.id}`);
+  .then(parseJSON)
+  .then(response => window.location.hash = `/shop/${response.id}`);
 }
