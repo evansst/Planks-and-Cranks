@@ -1,4 +1,3 @@
-import * as helper from "./helpers/helper.js";
 import homePage from "./home/homePage.js";
 import shopPage from "./shop/shopPage.js";
 import { loginPage } from "./login/login.js";
@@ -8,8 +7,9 @@ import createListing, { addSpecInput } from "./sell/createListing.js";
 import userProfilePage from "./profile/userProfile.js";
 import { addToCart, emptyCart } from "./cart/cart.js";
 import checkoutPage from "./checkout/checkout.js";
-import { loggedIn, setLogoutIcon } from './helpers/authService';
-import { routeForm } from './helpers/routerService';
+import { loggedIn, setLogoutIcon } from './helpers/authService.js';
+import { routeForm } from './helpers/routerService.js';
+import { main } from './helpers/helper.js';
 
 function routeChange() {
   const route = window.location.hash.split('#')[1] || '/';
@@ -28,7 +28,7 @@ function routeChange() {
 }
 
 const error404 = () => {
-  helper.main.innerHTML =  `
+  main.innerHTML =  `
     <section>
       <h1>ERROR 404</h1>
       <h2>Uh, oh.  It looks like that page doesn't exist</h2>
